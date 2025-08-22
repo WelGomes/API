@@ -1,0 +1,17 @@
+{
+    "name": "welbert/cripto",
+    "autoload": {
+        "psr-4": {
+            "Project\\": "back-end/app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Welbert Gomes",
+            "email": "welbert.gomes12@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
