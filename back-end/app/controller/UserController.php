@@ -12,7 +12,10 @@ final class UserController extends UserService implements Controller
 
         $nameSanitize = htmlspecialchars($json['name'], ENT_QUOTES);
         $email = filter_var($json['email'], FILTER_SANITIZE_EMAIL);
+        $password = $json['password'];
 
-        return parent::save(name: $nameSanitize, email: $email);
+        return parent::save(name: $nameSanitize, email: $email, password: $password);
     }
+
+    
 }
