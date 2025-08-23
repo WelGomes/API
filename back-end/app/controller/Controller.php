@@ -4,5 +4,6 @@ namespace Project\controller;
 
 interface Controller
 {
-    function post(): mixed;
+    function post(): array;
+    function get(): array;
 }

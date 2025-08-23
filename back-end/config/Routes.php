@@ -6,14 +6,18 @@ final class Routes
     private string $uri;
     private string $request;
 
-    public function __construct(string $uri, string $request)
-    {
+    public function __construct(
+        string $uri,
+        string $request
+    ) {
         $this->uri = $uri;
         $this->request = $request;
     }
 
-    private function load(string $controller, string $method): mixed
-    {
+    private function load(
+        string $controller,
+        string $method
+    ): mixed {
         $classController = "\\Project\\controller\\{$controller}";
 
         if (!class_exists($classController)) {
@@ -33,8 +37,11 @@ final class Routes
     {
         $routes = [
             'POST' => [
-                '/' => fn() => $this->load(controller: 'UserController', method: 'post'),
+                '/user' => fn() => $this->load(controller: 'UserController', method: 'post'),
             ],
+            'GET' => [
+                '/user' => fn() => $this->load(controller: 'UserController', method: 'get'),
+            ]
         ];
 
         if (!array_key_exists($this->request, $routes)) {
@@ -42,7 +49,7 @@ final class Routes
         }
 
         if (!array_key_exists($this->uri, $routes[$this->request])) {
-            throw new Exception('Path não existe');
+            throw new Exception('Path não existe' . $this->uri);
         }
 
         return $routes[$this->request][$this->uri]();

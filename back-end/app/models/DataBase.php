@@ -20,9 +20,20 @@ abstract class DataBase
         self::$DB_NAME = $_ENV['DB_NAME'];
         self::$DB_USER = $_ENV['DB_USER'];
         self::$DB_PASSWORD = $_ENV['DB_PASSWORD'];
+        
         try {
-            $pdo = new PDO("mysql:host=". self::$DB_HOST . ";dbname=" . self::$DB_NAME, self::$DB_USER, self::$DB_PASSWORD);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo = new PDO(
+                "mysql:host=" . self::$DB_HOST . 
+                ";dbname=" . self::$DB_NAME, 
+                self::$DB_USER, 
+                self::$DB_PASSWORD
+            );
+
+            $pdo->setAttribute(
+                PDO::ATTR_ERRMODE, 
+                PDO::ERRMODE_EXCEPTION
+            );
+
             return $pdo;
         } catch (PDOException $e) {
             throw new Exception("Erro na conexão com o banco: " . $e->getMessage());
