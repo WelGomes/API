@@ -61,7 +61,7 @@ final class UserService
         ];
     }
 
-    public function getUser(): array
+    public function get(): array
     {
         $userReturn = $this->user->get();
         return [

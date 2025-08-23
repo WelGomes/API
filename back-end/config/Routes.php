@@ -41,6 +41,12 @@ final class Routes
             ],
             'GET' => [
                 '/user' => fn() => $this->load(controller: 'UserController', method: 'get'),
+            ],
+            'PUT' => [
+                '/user' => fn() => $this->load(controller: 'UserController', method: 'get'),
+            ],
+            'DELETE' => [
+                '/user' => fn() => $this->load(controller: 'UserController', method: 'get'),
             ]
         ];
 
@@ -49,7 +55,7 @@ final class Routes
         }
 
         if (!array_key_exists($this->uri, $routes[$this->request])) {
-            throw new Exception('Path não existe' . $this->uri);
+            throw new Exception('Path não existe ' . $this->uri);
         }
 
         return $routes[$this->request][$this->uri]();

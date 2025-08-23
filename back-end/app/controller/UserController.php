@@ -32,6 +32,6 @@ final class UserController implements Controller
 
     public function get(): array
     {
-        return $this->userService->getUser();
+        return $this->userService->get();
     }
 }
