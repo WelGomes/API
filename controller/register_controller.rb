@@ -30,7 +30,7 @@ class RegisterController
 
       response.body = {
         message: error.message(),
-        status_code: 400
+        status_code: 403
       }.to_json
 
     end

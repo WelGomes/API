@@ -2,7 +2,6 @@ require_relative "../models/type_user"
 require_relative "../models/status"
 require_relative "../models/user"
 require_relative "../repository/user_repository"
-require 'bcrypt'
 
 class UserService
   
