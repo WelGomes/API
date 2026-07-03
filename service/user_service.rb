@@ -2,6 +2,7 @@ require_relative "../models/type_user"
 require_relative "../models/status"
 require_relative "../models/user"
 require_relative "../repository/user_repository"
+require 'bcrypt'
 
 class UserService
   
@@ -39,9 +40,9 @@ class UserService
       raise "Preencha todos os campos!"
     end
 
-    user = User.new(email: email, password: password)
+    user = @user_repository.find_by_email(User.new(email: email, password: password))
 
-    unless @user_repository.find_by_email(user)
+    unless user
       raise "Usuário ou senha incorreto!"
     end
 

@@ -20,13 +20,13 @@ class UserRepository < Connect
     result = stmt.execute(user.email)
 
     if result.first.nil?
-  
       return false
-      
     end
-    
-    user.password = result.first["password"]
-  
+
+    unless BCrypt::Password.new(result.first["password"]) == user.password
+      return false
+    end
+
     return user
 
   end
