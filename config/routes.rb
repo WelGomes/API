@@ -23,7 +23,7 @@ class Routes < WEBrick::HTTPServlet::AbstractServlet
     
   end
 
-  def do_PATH(request, response)
+  def do_PATCH(request, response)
     
   end
 
